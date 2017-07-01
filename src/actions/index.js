@@ -2,6 +2,8 @@ import axios from 'axios';
 
 export const FETCH_MOVIES = 'FETCH_MOVIES';
 export const FETCH_MOVIE = 'FETCH_MOVIE';
+export const CREATE_MOVIE = 'CREATE_MOVIE';
+
 
 export function fetchMovies() {
     const result = axios.get('http://localhost:4000/movies');
@@ -16,6 +18,16 @@ export function fetchMovie(id) {
 
     return {
         type: FETCH_MOVIE,
+        payload: result
+    }
+}
+
+export function createMovie(movie, callback) {
+    const result = axios.post('http://localhost:4000/movies', movie)
+        .then(() => callback());
+
+    return {
+        type: CREATE_MOVIE,
         payload: result
     }
 }
