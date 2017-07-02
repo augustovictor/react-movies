@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { FETCH_MOVIES, FETCH_MOVIE } from '../actions';
+import { FETCH_MOVIES, FETCH_MOVIE, DELETE_MOVIE } from '../actions';
 
 export default (state = {}, action) => {
     switch(action.type) {
@@ -9,6 +9,10 @@ export default (state = {}, action) => {
 
         case FETCH_MOVIE: {
             return { ...state, [action.payload.data[0]._id]: action.payload.data[0] };
+        }
+
+        case DELETE_MOVIE: {
+            return _.omit(state, action.payload);
         }
         
         default: return state;

@@ -10,7 +10,7 @@ class MoviesIndex extends Component {
     }
 
     renderMovies() {
-        if(!_.size(this.props.movies)) return <i>Loading...</i>
+        if(!_.size(this.props.movies)) return <i>There are no movies yet.</i>
         return _.map(this.props.movies, movie => {
             return <MovieItem key={ movie._id } movie={ movie } />
         });
