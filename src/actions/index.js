@@ -4,6 +4,8 @@ export const FETCH_MOVIES = 'FETCH_MOVIES';
 export const FETCH_MOVIE = 'FETCH_MOVIE';
 export const CREATE_MOVIE = 'CREATE_MOVIE';
 export const DELETE_MOVIE = 'DELETE_MOVIE';
+export const EDIT_MOVIE = 'EDIT_MOVIE';
+
 const ROOT_URL = 'http://localhost:4000/movies';
 
 
@@ -40,5 +42,15 @@ export function deleteMovie(id, callback) {
     return {
         type: DELETE_MOVIE,
         payload: id
+    }
+}
+
+export function updateMovie(movie, callback) {
+    const result = axios.put(ROOT_URL, movie)
+        .then(() => callback());
+
+    return {
+        type: DELETE_MOVIE,
+        payload: result
     }
 }

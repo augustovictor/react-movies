@@ -13,6 +13,7 @@ class MoviesItem extends Component {
         return(
             <div>
                 <Link to={ `/movies/${ movie._id }` }>{ movie.title }</Link> - 
+                <Link to={ `/movies/${ movie._id }/edit` }>Edit</Link>
                 <button onClick={ this.onDelete.bind(this, movie._id) }>Delete</button>
             </div>
         )
